@@ -3,4 +3,29 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- 淡棕色 #D1E9FC -->
+    <color name="lightBrown">#bcaaa4</color>
+    <!-- 淡蓝色 #D1E9FC -->
+    <color name="backgroundcolor">#E6E6E6</color>
+    <!-- 灰色 -->
+    <color name="divider">#E6E6E6</color>
+    <color name="dark_divider">#C0C1C2</color>
+    <color name="insput_translucent_white">#FFFFFF</color>
+
+    <drawable name="insput_translucent_background">#7F0000</drawable>
+
+    <color name="lightblue">#ECF0F5</color>
+    <color name="selected">#96CD00</color>
+    <color name="white">#FFF</color>
+    <color name="blue">#10A8FF</color>
+    <color name="red">#FF0000</color>
+    <color name="black">#000000</color>
+    <color name="lightblack">#A7A7A7</color>
+    <color name="shape_line">#ffcccccc</color>
+    <color name="button_unselected">#ff54acea</color>
+    <color name="button_selected">#96CD00</color>
+    <color name="workflow_option_list_titile">#E4F2FF</color>
+    <color name="bg_color">#EDEDED</color>
+    <color name="title_bg_color">#EBEBEB</color>
 </resources>

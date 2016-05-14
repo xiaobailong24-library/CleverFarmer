@@ -1,3 +1,123 @@
 <resources>
-    <string name="app_name">CleverFarmer</string>
+
+    <string name="app_name">施肥专家</string>
+    <string name="spinner_title1">请选择氮肥</string>
+    <string name="spinner_title2">请选择磷肥</string>
+    <string name="spinner_title3">请选择钾肥</string>
+
+
+    <string name="str_dialog_title">请选择您的地址</string>
+
+    <string name="spinner_1_name">请选择地区</string>
+    <string name="spinner_2_name">请选择市区</string>
+    <string name="spinner_3_name">请选择乡镇</string>
+    <string name="spinner_4_name">请选择村庄</string>
+
+    <!-- About -->
+    <string name="aboutText">青岛理工大学出品</string>
+    <string name="aboutEmail">联系我们：xiaobailong24@Gmail.com</string>
+
+    <string-array name="str_spinner1">
+        <item>威海市 </item>
+        <item>青岛市</item>
+    </string-array>
+
+    <!-- 青岛 -->
+    <string-array name="str_spinner2_qingdao">
+        <item>市南区</item>
+        <item>市北区 </item>
+    </string-array>
+
+    <!-- 威海 -->
+    <string-array name="str_spinner2_weihai">
+        <item>荣成市</item>
+        <item>乳山市 </item>
+    </string-array>
+
+    <!-- 荣成市 -->
+    <string-array name="str_spinner3_weihai_rongcheng">
+        <item>荣成经济开发区</item>
+        <item>石岛管理区</item>
+        <item>成山镇</item>
+        <item>港西镇</item>
+        <item>虎山镇</item>
+        <item>人和镇 </item>
+        <item>大疃镇</item>
+        <item>上庄镇</item>
+        <item>滕家镇</item>
+        <item>俚岛镇</item>
+        <item>荫子镇</item>
+        <item>夏庄镇</item>
+        <item>崖西镇</item>
+        <item>埠柳镇</item>
+        <item>王连街道办</item>
+        <item>东山街道办</item>
+        <item>宁津街道办</item>
+        <item>斥山街道办</item>
+        <item>桃园街道办</item>
+        <item>港湾街道办</item>
+        <item>崂山街道办</item>
+        <item>寻山街道办</item>
+        <item>城西街道办</item>
+        <item>崖头街道办</item>
+    </string-array>
+    <!-- 荣成经济开发区 -->
+    <string-array name="str_spinner4_weihai_rongcheng_kaifaqu">
+        <item>村庄A</item>
+        <item>村庄B </item>
+    </string-array>
+    <!-- 石岛管理区 -->
+    <string-array name="str_spinner4_weihai_rongcheng_shidao">
+        <item>村庄C</item>
+        <item>村庄D </item>
+    </string-array>
+
+    <!-- 乳山市 -->
+    <string-array name="str_spinner3_weihai_rushan">
+        <item>市南区</item>
+        <item>市北区 </item>
+    </string-array>
+
+
+    <!-- 市南区，10个街道办 -->
+    <string-array name="str_spinner1_1">
+        <item>八大峡街道办事处</item>
+        <item>云南路街道办事处</item>
+        <item>中山路街道办事处</item>
+        <item>八大关街道办事处</item>
+        <item>湛山街道办事处</item>
+        <item>香港中路街道办事处</item>
+        <item>八大湖街道办事处</item>
+        <item>金门路街道办事处</item>
+        <item>珠海路街道办事处</item>
+        <item>江苏路街道办事处</item>
+    </string-array>
+    <!-- 市南区 ，八大峡-->
+    <string-array name="str_spinner1_1_1">
+        <item>汶铁社区</item>
+        <item>汶水路社区</item>
+        <item>台西五路社区</item>
+        <item>挪庄社区</item>
+        <item>成武路社区</item>
+        <item>费县路社区</item>
+        <item>纬五路社区</item>
+        <item>台西一路社区</item>
+        <item>三门峡社区</item>
+        <item>龙羊峡社区</item>
+        <item>观音峡社区</item>
+        <item>团岛社区</item>
+    </string-array>
+    <!-- 市南区 ，云南路-->
+    <string-array name="str_spinner1_1_2">
+        <item>莘县路社区</item>
+        <item>西江路社区</item>
+        <item>广州路社区</item>
+        <item>枣庄路社区</item>
+        <item>四川路社区</item>
+        <item>嘉祥路社区</item>
+        <item>邹县路社区</item>
+        <item>寿张路社区</item>
+        <item>朝城路社区</item>
+    </string-array>
+
 </resources>
