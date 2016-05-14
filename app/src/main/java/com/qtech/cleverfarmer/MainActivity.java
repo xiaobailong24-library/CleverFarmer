@@ -37,12 +37,14 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static java.lang.Integer.parseInt;
+
 public class MainActivity extends Activity {
     private LocationService locationService;
     private TextView locationTextView;
 
     private UpdateInfo info;
-    private String versionname;
+    private int versionCode;
     private String TAG = "测试";
     private final int CANCLE_UPDATA = 0;   //取消更新
     private final int UPDATA_CLIENT = 1;   //确定更行
@@ -125,7 +127,7 @@ public class MainActivity extends Activity {
                 //						 ProgressDialog.show(MainActivity.this, "加载中", "请稍后......", false, true);
                 //获取当前应用版本号
                 try {
-                    versionname = getVersionName();
+                    versionCode = getVersionCode();
                     //							System.out.println(versionname);
                 } catch (Exception e1) {
                     // TODO Auto-generated catch block
@@ -145,16 +147,15 @@ public class MainActivity extends Activity {
                             conn.setConnectTimeout(5000);
                             InputStream is = conn.getInputStream();
                             info = getUpdataInfo(is);
-                            //						            System.out.println(info.toString());
-                            if (info.getVersion().equals(versionname)) {
-                                Log.i(TAG, "版本号相同无需升级");
-                                Message msg = handler.obtainMessage();
-                                msg.what = NEED_NOT_UPDATA;
-                                handler.sendMessage(msg);
-                            } else {
+                            if (parseInt(info.getVersion()) > versionCode) {
                                 Log.i(TAG, "版本号不同 ,提示用户升级 ");
                                 Message msg = handler.obtainMessage();
                                 msg.what = UPDATA_CLIENT;
+                                handler.sendMessage(msg);
+                            } else {
+                                Log.i(TAG, "版本号相同无需升级");
+                                Message msg = handler.obtainMessage();
+                                msg.what = NEED_NOT_UPDATA;
                                 handler.sendMessage(msg);
                             }
                         } catch (Exception e) {
@@ -225,12 +226,12 @@ public class MainActivity extends Activity {
     /*
      * 获取当前程序的版本号
      */
-    private String getVersionName() throws Exception {
+    private int getVersionCode() throws Exception {
         //获取packagemanager的实例
         PackageManager packageManager = getPackageManager();
         //getPackageName()是你当前类的包名，0代表是获取版本信息
         PackageInfo packInfo = packageManager.getPackageInfo(getPackageName(), 0);
-        return packInfo.versionName;
+        return packInfo.versionCode;
     }
 
     /*
