@@ -1,0 +1,499 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/danzhifei"
+    >
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+
+            android:id="@+id/biaoti"
+            android:layout_width="370dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:background="#FFE4C4"
+            android:gravity="center"
+            android:textColor="#008000"
+            android:textSize="25dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+
+                android:layout_width="160dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="3dp"
+                android:background="#D2B48C"
+                android:gravity="center"
+                android:text="土壤化验结果"
+                android:textColor="#008000"
+                android:textSize="20dp"/>
+
+            <TextView
+
+                android:layout_width="210dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="3dp"
+                android:background="#D2B48C"
+                android:gravity="center"
+                android:text="在此输入相关数据"
+                android:textColor="#008000"
+                android:textSize="20dp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="#8B4513"
+                android:gravity="center"
+                android:text="目标产量(kg/亩)"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/et_mubiao"
+                android:layout_width="210dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#FFF8DC"
+                android:gravity="center"
+                android:inputType="number">
+            </EditText>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="#8B4513"
+                android:gravity="center"
+                android:text="碱解氮(mg/kg)"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/et_quandan"
+                android:layout_width="210dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#FFF8DC"
+                android:gravity="center"
+                android:inputType="number">
+
+            </EditText>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="#8B4513"
+                android:gravity="center"
+                android:text="速效磷(mg/kg)"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/et_youxiaolin"
+                android:layout_width="210dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#FFF8DC"
+                android:gravity="center"
+                android:inputType="number">
+
+            </EditText>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="#8B4513"
+                android:gravity="center"
+                android:text="速效钾(mg/kg)"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/et_suxiaojia"
+                android:layout_width="210dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#FFF8DC"
+                android:gravity="center"
+                android:inputType="number">
+
+            </EditText>
+
+        </LinearLayout>
+
+        <TextView
+
+            android:layout_width="370dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:background="#D2B48C"
+            android:gravity="center"
+            android:text="请先点击以下两个按钮其中一个获取数据"
+            android:textColor="#008000"
+            android:textSize="15dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/gpsButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="1dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/btnb"
+                android:text="按GPS获取数据"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/villageButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/btnb"
+                android:text="按地区获取数据"
+                android:textSize="20dp"/>
+
+        </LinearLayout>
+
+
+        <TextView
+
+            android:layout_width="370dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:background="#FFE4C4"
+            android:gravity="center"
+            android:text="请选择单质肥种类"
+            android:textColor="#008000"
+            android:textSize="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+
+            <TextView
+
+                android:layout_width="185dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
+                android:background="#8B4513"
+                android:gravity="center"
+                android:text="请选择氮肥"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"/>
+
+
+            <Spinner
+                android:id="@+id/danfeixuanze"
+                android:layout_width="185dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#FFF8DC"
+                android:gravity="center"
+                android:prompt="@string/spinner_title1"
+                android:textColor="#000000"
+                android:textSize="20dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+
+                android:layout_width="185dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
+                android:background="#8B4513"
+                android:gravity="center"
+                android:text="请选择磷肥"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"/>
+
+            <Spinner
+                android:id="@+id/linfeixuanze"
+                android:layout_width="185dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#FFF8DC"
+                android:gravity="center"
+                android:prompt="@string/spinner_title1"
+                android:textColor="#000000"
+                android:textSize="20dp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+
+                android:layout_width="185dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
+                android:background="#8B4513"
+                android:gravity="center"
+                android:text="请选择钾肥"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"/>
+
+            <Spinner
+                android:id="@+id/jiafeixuanze"
+                android:layout_width="185dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#FFF8DC"
+                android:gravity="center"
+                android:prompt="@string/spinner_title1"
+                android:textColor="#000000"
+                android:textSize="20dp"/>
+
+        </LinearLayout>
+
+
+        <TextView
+
+            android:layout_width="370dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:background="#FFE4C4"
+            android:gravity="center"
+            android:text="请输入复合肥料养分含量(%)\n(没有请输入0,至少填写两种)"
+            android:textColor="#008000"
+            android:textSize="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+
+                android:layout_width="185dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
+                android:background="#8B4513"
+                android:gravity="center"
+                android:text="纯氮"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/et_chundan"
+                android:layout_width="185dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#FFF8DC"
+                android:gravity="center"
+                android:hint="请输入数据"
+                android:inputType="numberDecimal"
+                android:textSize="17sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+
+                android:layout_width="185dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
+                android:background="#8B4513"
+                android:gravity="center"
+                android:text="五氧化二磷"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/et_wuyanghuaerlin"
+                android:layout_width="185dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#FFF8DC"
+                android:gravity="center"
+                android:hint="请输入数据"
+                android:inputType="number"
+                android:textSize="17sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+
+                android:layout_width="185dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
+                android:background="#8B4513"
+                android:gravity="center"
+                android:text="氯化钾"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/et_yanghuajia"
+                android:layout_width="185dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#FFF8DC"
+                android:gravity="center"
+                android:hint="请输入数据"
+                android:inputType="number"
+                android:textSize="17sp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/tuijianshifei"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/btnb"
+            android:text="获取配肥方案"
+            android:textSize="20dp"/>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

@@ -170,7 +170,6 @@ public class MainActivity extends Activity {
             }
         });
 
-
     }
 
 
@@ -187,7 +186,6 @@ public class MainActivity extends Activity {
                 String lngString = String.valueOf(location.getLongitude());  //经度
                 //					System.out.println("经度" + lngString);
                 String locationString = location.getAddrStr();
-
 
                 locationTextView.setText(locationString);
 

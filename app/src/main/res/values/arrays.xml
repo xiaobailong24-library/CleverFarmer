@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <string-array name="colors1">
+            <item>尿素</item>
+            <item>硫酸铵</item>
+            <item>硝酸铵</item>
+            <item>碳酸氢铵</item>
+        </string-array>
+        
+         <string-array name="colors2">
+            <item>过磷酸钙</item>
+            <item>重过磷酸钙</item>
+        </string-array>
+        
+          <string-array name="colors3">
+            <item>氯化钾</item>
+            <item>硫酸钾</item>
+        </string-array>
+    </resources>

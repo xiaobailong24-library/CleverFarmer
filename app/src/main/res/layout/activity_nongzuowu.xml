@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@drawable/background"
+              android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tianqi"
+        android:layout_marginTop="10dp"
+        android:layout_width="320dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:background="@android:drawable/zoom_plate">
+
+    </TextView>
+
+    <TextView
+
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请选择农作物"
+        android:textColor="#FF0000"
+        android:layout_gravity="center"
+        android:textSize="30dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_weight="1"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            >
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/yumi"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/yumi" />
+
+
+            <TextView
+
+                android:layout_marginTop="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="玉米"
+                android:textColor="#000000"
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:id="@+id/yumi1" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            >
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/huasheng"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/huasheng"/>
+
+            <TextView
+
+                android:layout_marginTop="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="花生"
+                android:textColor="#000000"
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:id="@+id/huasheng1"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_weight="1"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            >
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/xiaomai"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/xiaomai"
+                />
+
+            <TextView
+
+                android:layout_marginTop="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="小麦"
+                android:textColor="#000000"
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:id="@+id/xiaomai1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            >
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/dadou"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/dadou" />
+
+            <TextView
+
+                android:layout_marginTop="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="待添加.."
+                android:textColor="#000000"
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:id="@+id/dadou1"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
