@@ -3,6 +3,7 @@ package com.qtech.cleverfarmer;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -333,11 +334,13 @@ public class MainActivity extends Activity {
      */
     protected void downLoadApk() {
         final ProgressDialog pd;    //进度条对话框
+        final Thread downloadThread;
         pd = new ProgressDialog(this);
         pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         pd.setMessage("正在下载更新");
         pd.show();
-        new Thread() {
+
+        downloadThread = new Thread() {
             @Override
             public void run() {
                 try {
@@ -352,7 +355,15 @@ public class MainActivity extends Activity {
                     e.printStackTrace();
                 }
             }
-        }.start();
+        };
+        downloadThread.start();
+        pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                Log.e(TAG, "onCancel: 取消下载");
+                downloadThread.interrupt();
+            }
+        });
     }
 
     //安装apk
