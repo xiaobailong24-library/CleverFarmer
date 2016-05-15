@@ -42,7 +42,6 @@ import static java.lang.Integer.parseInt;
 public class MainActivity extends Activity {
     private LocationService locationService;
     private TextView locationTextView;
-
     private UpdateInfo info;
     private int versionCode;
     private String TAG = "测试";
