@@ -369,7 +369,7 @@ public class Turang extends Activity implements SpinnerAdapter {
             public void run() {
                 // TODO Auto-generated method stub
                 super.run();
-                String httpUrl = "http://115.28.180.110/app_interface/soilmesGPS.php?";
+                String httpUrl = "http://115.28.180.110/app_interface/soilmesGPS.php";
                 String path = httpUrl + "?longtitude=" + lon + "&latitude="
                         + lat;
                 try {
