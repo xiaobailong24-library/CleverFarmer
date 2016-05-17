@@ -67,6 +67,8 @@ public class Turang extends Activity implements SpinnerAdapter {
     private String PFer; // 磷肥
     private String KFer; // 钾肥
 
+    private static Activity turaung_ac;
+
     @SuppressLint("HandlerLeak")
     public static Handler handler = new Handler() {
         public void handleMessage(android.os.Message msg) {
@@ -85,6 +87,9 @@ public class Turang extends Activity implements SpinnerAdapter {
                 case 2: // 根据GPS获取数据
                     way = 2;
                     break;
+                case 3: //不在威海市时，位置信息没有数据
+                    Toast.makeText(turaung_ac, "位置信息有误，不在威海市", Toast.LENGTH_SHORT).show();
+                    break;
             }
 
         }
@@ -98,6 +103,7 @@ public class Turang extends Activity implements SpinnerAdapter {
         requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         setContentView(R.layout.activity_turang);
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title);
+        turaung_ac = Turang.this;
 
         title = (TextView) findViewById(R.id.biaoti);
         Intent a = getIntent();
@@ -393,7 +399,18 @@ public class Turang extends Activity implements SpinnerAdapter {
                         handler.sendEmptyMessage(2); // 发送一个空消息
                         // System.out.println(sbf.toString());
                         Log.i("Fu", sbf.toString());
-                        paresJson(sbf.toString());
+
+                        JSONObject jsonObject_root = new JSONObject(sbf.toString());
+                        JSONObject jsonObject_data = jsonObject_root.getJSONObject("data");
+                        String queryNull = jsonObject_data.getString("queryNull");
+                        if (queryNull.equals("404")){
+                            Message msg = handler.obtainMessage();
+                            msg.what = 3;
+                            handler.sendMessage(msg);
+                        } else {
+                            paresJson(sbf.toString());
+                        }
+
                     }
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
