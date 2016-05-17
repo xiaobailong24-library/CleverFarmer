@@ -252,7 +252,7 @@ public class Turang extends Activity implements SpinnerAdapter {
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.colors1,
-                android.R.layout.simple_spinner_dropdown_item);
+                android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s1.setAdapter(adapter);
         s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -276,7 +276,7 @@ public class Turang extends Activity implements SpinnerAdapter {
 
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
                 this, R.array.colors2,
-                android.R.layout.simple_spinner_dropdown_item);
+                android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s2.setAdapter(adapter2);
         s2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -299,7 +299,7 @@ public class Turang extends Activity implements SpinnerAdapter {
 
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(
                 this, R.array.colors3,
-                android.R.layout.simple_spinner_dropdown_item);
+                android.R.layout.simple_spinner_item);
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s3.setAdapter(adapter3);
         s3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
