@@ -88,7 +88,7 @@ public class Turang extends Activity implements SpinnerAdapter {
                     way = 2;
                     break;
                 case 3: //不在威海市时，位置信息没有数据
-                    Toast.makeText(turaung_ac, "位置信息有误，不在威海市", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(turaung_ac, "位置信息有误,不在威海市,建议按地区获取数据", Toast.LENGTH_SHORT).show();
                     break;
             }
 
