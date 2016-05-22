@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
     private LocationService locationService;
     private TextView locationTextView;
     private UpdateInfo info;
-    private int versionCode;
+    private static int versionCode, romoteVersionCode;
     private String TAG = "测试";
     private final int CANCLE_UPDATA = 0;   //取消更新
     private final int UPDATA_CLIENT = 1;   //确定更行
@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
             switch (msg.what) {
                 case UPDATA_CLIENT:
                     //对话框通知用户升级程序
-                    showUpdataDialog();
+                    showUpdateDialog();
                     break;
                 case GET_UNDATAINFO_ERROR:
                     //服务器超时
@@ -115,11 +115,7 @@ public class MainActivity extends Activity {
 
 
         ///////////////////////////////版本更新////////////////////////////////////////////////////
-
-
         btn2 = (Button) findViewById(R.id.banben);
-
-
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,8 +141,9 @@ public class MainActivity extends Activity {
                             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                             conn.setConnectTimeout(5000);
                             InputStream is = conn.getInputStream();
-                            info = getUpdataInfo(is);
-                            if (parseInt(info.getVersion()) > versionCode) {
+                            info = getUpdateInfo(is);
+                            romoteVersionCode = parseInt(info.getVersion());
+                            if (romoteVersionCode > versionCode) {
                                 Log.i(TAG, "版本号不同 ,提示用户升级 ");
                                 Message msg = handler.obtainMessage();
                                 msg.what = UPDATA_CLIENT;
@@ -236,7 +233,7 @@ public class MainActivity extends Activity {
     /*
      * 用pull解析器解析服务器返回的xml文件 (xml封装了版本号)
      */
-    public static UpdateInfo getUpdataInfo(InputStream is) throws Exception {
+    public static UpdateInfo getUpdateInfo(InputStream is) throws Exception {
         XmlPullParser parser = Xml.newPullParser();
         parser.setInput(is, "utf-8");//设置解析的数据源
         int type = parser.getEventType();
@@ -267,7 +264,7 @@ public class MainActivity extends Activity {
             //获取到文件的大小
             pd.setMax(conn.getContentLength());
             InputStream is = conn.getInputStream();
-            File file = new File(Environment.getExternalStorageDirectory(), "Update.apk");
+            File file = new File(Environment.getExternalStorageDirectory(), "CleverFarmer_0." + romoteVersionCode + ".apk");
             FileOutputStream fos = new FileOutputStream(file);
             BufferedInputStream bis = new BufferedInputStream(is);
             byte[] buffer = new byte[1024];
@@ -298,7 +295,7 @@ public class MainActivity extends Activity {
      *  3.通过builder 创建一个对话框
      *  4.对话框show()出来
      */
-    protected void showUpdataDialog() {
+    protected void showUpdateDialog() {
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         layout = layoutInflater.inflate(R.layout.update_dialog, null);
         Button okUpdate = (Button) layout.findViewById(R.id.update_ok);
