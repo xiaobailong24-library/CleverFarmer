@@ -51,7 +51,7 @@ public class Turang extends Activity implements SpinnerAdapter {
     private String latitude, longitude; // 经度和纬度
     private Spinner s1, s2, s3;
     private TextView title;
-    private Button selectAddress, gpsButton, submit;
+    private Button selectAddress, gpsButton, customButton, submit;
     public EditText et1;
     public static EditText et2;
     public static EditText et3;
@@ -60,7 +60,7 @@ public class Turang extends Activity implements SpinnerAdapter {
     public EditText et6;
     public EditText et7;
 
-    private static int way = 0; // 获取土地信息的方式, 0是还没获取，1是地区 2是GPS
+    private static int way = 0; // 获取土地信息的方式, 0是还没获取，1是地区 2是GPS, 3是手动输入
     private static String area; // 地区
     private String crop; // 农作物
     private String NFer; // 氮肥
@@ -81,11 +81,13 @@ public class Turang extends Activity implements SpinnerAdapter {
                     break;
                 case 1: // 根据地区获取数据
                     area = (String) msg.obj;
+                    Log.e(TAG, "handleMessage: area"+ area);
                     getDataByArea(area);
                     way = 1;
                     break;
                 case 2: // 根据GPS获取数据
                     way = 2;
+                    Log.e(TAG, "handleMessage: GPS");
                     break;
                 case 3: //不在威海市时，位置信息没有数据
                     Toast.makeText(turaung_ac, "位置信息有误,不在威海市,建议按地区获取数据", Toast.LENGTH_SHORT).show();
@@ -94,7 +96,6 @@ public class Turang extends Activity implements SpinnerAdapter {
 
         }
 
-        ;
     };
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,6 +141,9 @@ public class Turang extends Activity implements SpinnerAdapter {
                 Bundle bundle = new Bundle();
                 bundle.putString("area", area);
                 bundle.putString("crop", crop);
+                bundle.putString("fullN", et2.getText().toString());
+                bundle.putString("validP", et3.getText().toString());
+                bundle.putString("fastK", et4.getText().toString());
                 bundle.putString("NFer", NFer);
                 bundle.putString("PFer", PFer);
                 bundle.putString("KFer", KFer);
@@ -226,6 +230,9 @@ public class Turang extends Activity implements SpinnerAdapter {
             @Override
             public void onClick(View v) { // 选择地址
                 Log.e("selectAddress", "onClick");
+                et2.setEnabled(false);   //不可编辑
+                et3.setEnabled(false);
+                et4.setEnabled(false);
                 customDialog.show();
             }
 
@@ -238,11 +245,28 @@ public class Turang extends Activity implements SpinnerAdapter {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                et2.setEnabled(false);   //不可编辑
+                et3.setEnabled(false);
+                et4.setEnabled(false);
                 Log.i("Fu", "经度:" + latitude);
                 Log.i("Fu", "纬度:" + longitude);
                 getDataByGPS(latitude, longitude);
             }
         });
+
+        // ////////////////////////////////////手动填写数据//////////////////////////////////
+        customButton = (Button)findViewById(R.id.customButton);
+        customButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e(TAG, "onClick: customButton");
+                et2.setEnabled(true);   //可编辑
+                et3.setEnabled(true);
+                et4.setEnabled(true);
+                way=3;
+            }
+        });
+
 
         // ////////////////////////////////////spinner////////////////////////////////////////
 
@@ -263,6 +287,7 @@ public class Turang extends Activity implements SpinnerAdapter {
                 // +s1.getSelectedItem().toString(),
                 // Toast.LENGTH_SHORT).show();
                 NFer = s1.getSelectedItem().toString();
+                Log.e(TAG, "onItemSelected: " + NFer);
 
             }
 
@@ -287,6 +312,7 @@ public class Turang extends Activity implements SpinnerAdapter {
                 // +s2.getSelectedItem().toString(),
                 // Toast.LENGTH_SHORT).show();
                 PFer = s2.getSelectedItem().toString();
+                Log.e(TAG, "onItemSelected: " + PFer);
             }
 
             @Override
@@ -310,6 +336,7 @@ public class Turang extends Activity implements SpinnerAdapter {
                 // +s3.getSelectedItem().toString(),
                 // Toast.LENGTH_SHORT).show();
                 KFer = s3.getSelectedItem().toString();
+                Log.e(TAG, "onItemSelected: " + KFer);
             }
 
             @Override
@@ -403,7 +430,7 @@ public class Turang extends Activity implements SpinnerAdapter {
                         JSONObject jsonObject_root = new JSONObject(sbf.toString());
                         JSONObject jsonObject_data = jsonObject_root.getJSONObject("data");
                         String queryNull = jsonObject_data.getString("queryNull");
-                        if (queryNull.equals("404")){
+                        if (queryNull.equals("404")) {
                             Message msg = handler.obtainMessage();
                             msg.what = 3;
                             handler.sendMessage(msg);
@@ -425,14 +452,14 @@ public class Turang extends Activity implements SpinnerAdapter {
         try {
             JSONObject jsonObject_root = new JSONObject(strResult);
             JSONObject jsonObject_data = jsonObject_root.getJSONObject("data");
+            String fullN = jsonObject_data.getString("fullN");
             String validP = jsonObject_data.getString("validP");
             String fastK = jsonObject_data.getString("fastK");
-            String fullN = jsonObject_data.getString("fullN");
 
-            // System.out.println(message);
-            // System.out.println(validP);
-            // System.out.println(fastK);
-            // System.out.println(fullN);
+            System.out.println(fullN);
+            System.out.println(validP);
+            System.out.println(fastK);
+
 
             Bundle bundle = new Bundle();
             bundle.putString("validP", validP);

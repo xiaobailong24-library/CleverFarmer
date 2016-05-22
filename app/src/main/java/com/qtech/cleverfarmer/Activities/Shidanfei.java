@@ -28,18 +28,20 @@ import java.net.URLEncoder;
 
 public class Shidanfei extends Activity {
 
+    private static final String TAG = "Shidanfei";
+
     private TextView locationTextView;
-    private TextView tv1,tv2,tv3,tv4,ttv1,ttv2,ttv3;
+    private TextView tv1, tv2, tv3, tv4, ttv1, ttv2, ttv3;
     @SuppressWarnings("unused")
-    private Button btn1,btn2,btn3,btn4,btn5;
-    private String text5,text6,text7,NF2,text10,text11,text12,lable4;
+    private Button btn1, btn2, btn3, btn4, btn5;
+    private String text5, text6, text7, NF2, text10, text11, text12, lable4;
 
     @SuppressLint("HandlerLeak")
-    Handler handler = new Handler(){
+    Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
-                    Bundle bundle = (Bundle)msg.obj;
+                    Bundle bundle = (Bundle) msg.obj;
 
                     ttv1.setText(bundle.getString("simpN"));
                     ttv2.setText(bundle.getString("simpP"));
@@ -61,7 +63,9 @@ public class Shidanfei extends Activity {
                     break;
             }
 
-        };
+        }
+
+        ;
     };
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +76,15 @@ public class Shidanfei extends Activity {
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title);
         Bundle bundle = getIntent().getExtras();
 
-        String a = bundle.getString("area");
-        String c = bundle.getString("crop");
+        String area = bundle.getString("area");
+        String crop = bundle.getString("crop");
+
+        // TODO: 2016/5/21
+        String fullN = bundle.getString("fullN");
+        String validP = bundle.getString("validP");
+        String fastK = bundle.getString("fastK");
+        Log.e(TAG, "onCreate: " + "fullN:" + fullN + ",validP:" + validP + ",fastK:" + fastK);
+
         String NF = bundle.getString("NFer");
         String PF = bundle.getString("PFer");
         String KF = bundle.getString("KFer");
@@ -83,26 +94,13 @@ public class Shidanfei extends Activity {
         String clk = bundle.getString("CLK");
         int way = bundle.getInt("way");
 
-        //        System.out.println(a);
-        //        System.out.println(c);
-        //        System.out.println(NF);
-        //        System.out.println(PF);
-        //        System.out.println(KF);
-        //        System.out.println(t);
-        //        System.out.println(N);
-        //        System.out.println(o5p2);
-        //        System.out.println(clk);
-        if (way == 1) {  //通过地区获取的数据
-            getData(a, c, NF, PF, KF, t, N, o5p2, clk);
-        } else if (way == 2) { //通过GPS获取的数据
-            String lon = ((LocationApplication)getApplication()).Longtitude;
-            String lat = ((LocationApplication)getApplication()).Latitude;
-            getData2(lon, lat, c, NF, PF, KF, t, N, o5p2, clk);
-        }
+        String lon = ((LocationApplication) getApplication()).Longtitude;
+        String lat = ((LocationApplication) getApplication()).Latitude;
 
+        getData(way, area, lon, lat, crop, fullN, validP, fastK, NF, PF, KF, t, N, o5p2, clk);
 
         locationTextView = (TextView) findViewById(R.id.LocationText);
-        locationTextView.setText(((LocationApplication)getApplication()).locationString);
+        locationTextView.setText(((LocationApplication) getApplication()).locationString);
 
         ttv1 = (TextView) findViewById(R.id.ttv1);
         ttv2 = (TextView) findViewById(R.id.ttv2);
@@ -118,7 +116,7 @@ public class Shidanfei extends Activity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent xuanze_intent=new Intent(Shidanfei.this,Fuhefei.class);
+                Intent xuanze_intent = new Intent(Shidanfei.this, Fuhefei.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("Text5", text5);
                 bundle.putString("Text6", text6);
@@ -138,7 +136,7 @@ public class Shidanfei extends Activity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Uri uri = Uri.parse("smsto:");    //给哪个手机号发送短信
-                Intent intent = new Intent(Intent.ACTION_SENDTO,uri);
+                Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
                 String body = "[基肥施肥量]" + ttv1.getText().toString() + tv1.getText().toString() + "公斤/亩 "
                         + ttv2.getText().toString() + tv2.getText().toString() + "公斤/亩 "
                         + ttv3.getText().toString() + tv3.getText().toString() + "公斤/亩\n"
@@ -149,45 +147,78 @@ public class Shidanfei extends Activity {
         });
     }
 
-    public void getData(final String a, final String c, final String NF, final String PF, final String KF,
-                        final String t, final String N, final String o5p2, final String clk){
-        Thread thread = new Thread(){
+
+    public void getData(final int way, final String area, final String lon, final String lat, final String crop,
+                        final String fullN, final String validP, final String fastK, final String NF, final String PF, final String KF,
+                        final String t, final String N, final String o5p2, final String clk){ 
+        Log.e(TAG, "getData: way=" + way);
+        String httpUrl="http://115.28.180.110/app_interface/cetuProcess.php";
+        final String[] httpArg_area = {""};
+        switch(way){
+            case 1:
+                httpUrl = "http://115.28.180.110/app_interface/cetuProcess.php";
+                break;
+            case 2:
+                httpUrl = "http://115.28.180.110/app_interface/cetuGPS.php";
+                break;
+            case 3:
+                httpUrl = "http://115.28.180.110/app_interface/user_defined.php";
+                break;
+        }
+//        Log.e(TAG, "getData: httpUrl" + httpUrl);
+        final String finalHttpUrl = httpUrl;
+//        Log.e(TAG, "getData: httpUrl" + finalHttpUrl);
+        final String[] path = new String[1];
+        Thread thread = new Thread() {
             @Override
             public void run() {
                 // TODO Auto-generated method stub
                 super.run();
-                String httpUrl = "http://115.28.180.110/app_interface/cetuProcess.php";
-                String httpArg_area = null;
                 String httpArg_crop = null;
                 String httpArg_N = null;
                 String httpArg_P = null;
                 String httpArg_K = null;
                 try {
-                    httpArg_area = URLEncoder.encode(a, "UTF-8");
-                    httpArg_crop = URLEncoder.encode(c, "UTF-8");
+                    httpArg_area[0] = URLEncoder.encode(area, "UTF-8");
+                    httpArg_crop = URLEncoder.encode(crop, "UTF-8");
                     httpArg_N = URLEncoder.encode(NF, "UTF-8");
                     httpArg_P = URLEncoder.encode(PF, "UTF-8");
                     httpArg_K = URLEncoder.encode(KF, "UTF-8");
+
                 } catch (UnsupportedEncodingException e1) {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
+                switch(way){
+                    case 1:     //1是地区
+                        path[0] = finalHttpUrl + "?area=" + httpArg_area[0] + "&targetPro=" + t + "&Crops=" + httpArg_crop
+                                + "&N=" + httpArg_N + "&P=" + httpArg_P + "&K=" + httpArg_K
+                                + "&N1=" + N + "&P1=" + o5p2 + "&K1=" + clk;
+                        break;
+                    case 2:     //2是GPS
+                        path[0] = finalHttpUrl + "?longtitude=" + lon + "&latitude=" + lat + "&targetPro=" + t + "&Crops=" + httpArg_crop
+                                + "&N=" + httpArg_N + "&P=" + httpArg_P + "&K=" + httpArg_K
+                                + "&N1=" + N + "&P1=" + o5p2 + "&K1=" + clk;
+                        break;
+                    case 3:     //3是手动输入
+                        path[0] = finalHttpUrl + "?Crops=" + httpArg_crop + "&targetPro=" + t
+                                + "&longtitude=" + lon + "&latitude=" + lat
+                                + "&jianjiedan=" + fullN + "&fastK=" + fastK + "&validP=" + validP
+                                + "&N_kind=" + NF + "&P_kind=" + PF + "&K_kind=" + KF
+                                + "&N1=" + N + "&P1=" + o5p2 + "&K1" +  clk;
+                        break;
+                }
 
-                String path = httpUrl + "?area=" + httpArg_area + "&targetPro=" + t
-                        + "&Crops=" + httpArg_crop + "&N=" + httpArg_N
-                        + "&P=" + httpArg_P + "&K=" + httpArg_K
-                        + "&N1=" + N + "&P1=" + o5p2 + "&K1=" + clk;
-
-                System.out.println(path);
+                Log.e(TAG, "getData:" + path[0].toString());
                 try {
-                    URL url = new URL(path);
+                    URL url = new URL(path[0]);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("GET");
                     conn.setConnectTimeout(5000);
                     conn.setReadTimeout(5000);
                     if (conn.getResponseCode() == 200) {
                         InputStream is = conn.getInputStream();
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(is,"UTF-8"));
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
                         String strRead = null;
                         StringBuffer sbf = new StringBuffer();
                         while ((strRead = reader.readLine()) != null) {
@@ -195,9 +226,8 @@ public class Shidanfei extends Activity {
                             sbf.append("\r\n");
                         }
                         reader.close();
-                        //						System.out.println(sbf.toString());
+                        Log.e(TAG, "getData:" + sbf.toString());
                         paresJson(sbf.toString());
-
                     }
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
@@ -208,67 +238,7 @@ public class Shidanfei extends Activity {
         thread.start();
     }
 
-    public void getData2(final String lon, final String lat, final String c, final String NF, final String PF, final String KF,
-                         final String t, final String N, final String o5p2, final String clk){
-        Thread thread = new Thread(){
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                super.run();
-                String httpUrl = "http://115.28.180.110/app_interface/cetuGPS.php";
-                String httpArg_crop = null;
-                String httpArg_N = null;
-                String httpArg_P = null;
-                String httpArg_K = null;
-                try {
-                    httpArg_crop = URLEncoder.encode(c, "UTF-8");
-                    httpArg_N = URLEncoder.encode(NF, "UTF-8");
-                    httpArg_P = URLEncoder.encode(PF, "UTF-8");
-                    httpArg_K = URLEncoder.encode(KF, "UTF-8");
-                } catch (UnsupportedEncodingException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-
-                String path = httpUrl + "?longtitude=" + lon + "&latitude=" + lat
-                        + "&targetPro=" + t
-                        + "&Crops=" + httpArg_crop + "&N=" + httpArg_N
-                        + "&P=" + httpArg_P + "&K=" + httpArg_K
-                        + "&N1=" + N + "&P1=" + o5p2 + "&K1=" + clk;
-
-                Log.i("Fu", path.toString());
-                try {
-                    URL url = new URL(path);
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("GET");
-                    conn.setConnectTimeout(5000);
-                    conn.setReadTimeout(5000);
-                    if (conn.getResponseCode() == 200) {
-                        InputStream is = conn.getInputStream();
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(is,"UTF-8"));
-                        String strRead = null;
-                        StringBuffer sbf = new StringBuffer();
-                        while ((strRead = reader.readLine()) != null) {
-                            sbf.append(strRead);
-                            sbf.append("\r\n");
-                        }
-                        reader.close();
-                        //						System.out.println(sbf.toString());
-                        Log.i("Fu", sbf.toString());
-                        paresJson(sbf.toString());
-
-                    }
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        };
-        thread.start();
-    }
-
-
-    private void paresJson(String strResult){
+    private void paresJson(String strResult) {
         try {
             JSONObject root = new JSONObject(strResult);
             JSONObject data = root.getJSONObject("data");
@@ -308,16 +278,6 @@ public class Shidanfei extends Activity {
             msg.what = 0;
             msg.obj = bundle;
             handler.sendMessage(msg);
-
-            //			System.out.println(NF1);
-            //			System.out.println(PF1);
-            //			System.out.println(KF1);
-            //			System.out.println(NF2);
-            //			System.out.println(Text5);
-            //			System.out.println(Text6);
-            //			System.out.println(Text7);
-            //			System.out.println(Text9);
-            //			System.out.println(lable4);
 
         } catch (Exception e) {
             // TODO Auto-generated catch block

@@ -2,18 +2,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/danzhifei"
-    >
-
+    android:background="@drawable/danzhifei">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <TextView
-
             android:id="@+id/biaoti"
             android:layout_width="370dp"
             android:layout_height="50dp"
@@ -24,18 +20,15 @@
             android:textColor="#008000"
             android:textSize="25dp"/>
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
-
                 android:layout_width="160dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="3dp"
@@ -46,7 +39,6 @@
                 android:textSize="20dp"/>
 
             <TextView
-
                 android:layout_width="210dp"
                 android:layout_height="35dp"
                 android:layout_marginLeft="1dp"
@@ -58,18 +50,15 @@
                 android:textSize="20dp"/>
         </LinearLayout>
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
-
                 android:layout_width="160dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -90,9 +79,7 @@
                 android:inputType="number">
             </EditText>
 
-
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,11 +87,9 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
-
                 android:layout_width="160dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -122,10 +107,8 @@
                 android:layout_marginTop="3dp"
                 android:background="#FFF8DC"
                 android:gravity="center"
-                android:inputType="number">
-
-            </EditText>
-
+                android:inputType="number"
+                android:enabled="false"/>
 
         </LinearLayout>
 
@@ -136,11 +119,9 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
-
                 android:layout_width="160dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -158,13 +139,10 @@
                 android:layout_marginTop="3dp"
                 android:background="#FFF8DC"
                 android:gravity="center"
-                android:inputType="number">
-
-            </EditText>
-
+                android:inputType="number"
+                android:enabled="false"/>
 
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -172,11 +150,9 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
-
                 android:layout_width="160dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -194,24 +170,21 @@
                 android:layout_marginTop="3dp"
                 android:background="#FFF8DC"
                 android:gravity="center"
-                android:inputType="number">
-
-            </EditText>
+                android:inputType="number"
+                android:enabled="false"/>
 
         </LinearLayout>
 
         <TextView
-
             android:layout_width="370dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="3dp"
             android:background="#D2B48C"
             android:gravity="center"
-            android:text="请先点击以下两个按钮其中一个获取数据"
+            android:text="请先点击以下三个按钮其中一个获取数据"
             android:textColor="#008000"
             android:textSize="15dp"/>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -231,9 +204,8 @@
                 android:layout_marginTop="3dp"
                 android:layout_weight="1"
                 android:background="@drawable/btnb"
-                android:text="按GPS获取数据"
+                android:text="GPS获取"
                 android:textSize="20dp"/>
-
             <Button
                 android:id="@+id/villageButton"
                 android:layout_width="0dp"
@@ -244,14 +216,24 @@
                 android:layout_marginTop="3dp"
                 android:layout_weight="1"
                 android:background="@drawable/btnb"
-                android:text="按地区获取数据"
+                android:text="按地区获取"
+                android:textSize="20dp"/>
+            <Button
+                android:id="@+id/customButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/btnb"
+                android:text="手动填写"
                 android:textSize="20dp"/>
 
         </LinearLayout>
 
-
         <TextView
-
             android:layout_width="370dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -268,12 +250,9 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="horizontal"
-            >
-
+            android:orientation="horizontal">
 
             <TextView
-
                 android:layout_width="185dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="3dp"
@@ -282,7 +261,6 @@
                 android:text="请选择氮肥"
                 android:textColor="#FFFFFF"
                 android:textSize="20dp"/>
-
 
             <Spinner
                 android:id="@+id/danfeixuanze"
@@ -296,7 +274,6 @@
                 android:prompt="@string/spinner_title1"
                 android:textColor="#000000"
                 android:textSize="20dp"/>
-
         </LinearLayout>
 
         <LinearLayout
@@ -305,11 +282,9 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
-
                 android:layout_width="185dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="3dp"
@@ -330,7 +305,6 @@
                 android:prompt="@string/spinner_title1"
                 android:textColor="#000000"
                 android:textSize="20dp"/>
-
         </LinearLayout>
 
 
@@ -340,11 +314,9 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
-
                 android:layout_width="185dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="3dp"
@@ -365,12 +337,9 @@
                 android:prompt="@string/spinner_title1"
                 android:textColor="#000000"
                 android:textSize="20dp"/>
-
         </LinearLayout>
 
-
         <TextView
-
             android:layout_width="370dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -387,11 +356,9 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
-
                 android:layout_width="185dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="3dp"
@@ -412,7 +379,6 @@
                 android:hint="请输入数据"
                 android:inputType="numberDecimal"
                 android:textSize="17sp"/>
-
         </LinearLayout>
 
         <LinearLayout
@@ -421,11 +387,9 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
-
                 android:layout_width="185dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="3dp"
@@ -446,7 +410,6 @@
                 android:hint="请输入数据"
                 android:inputType="number"
                 android:textSize="17sp"/>
-
         </LinearLayout>
 
         <LinearLayout
@@ -455,11 +418,9 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
-
                 android:layout_width="185dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="3dp"
@@ -480,7 +441,6 @@
                 android:hint="请输入数据"
                 android:inputType="number"
                 android:textSize="17sp"/>
-
         </LinearLayout>
 
         <Button
@@ -492,8 +452,6 @@
             android:text="获取配肥方案"
             android:textSize="20dp"/>
 
-
     </LinearLayout>
-
 
 </ScrollView>
