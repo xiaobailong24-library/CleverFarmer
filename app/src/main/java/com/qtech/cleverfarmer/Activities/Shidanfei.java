@@ -77,13 +77,15 @@ public class Shidanfei extends Activity {
         Bundle bundle = getIntent().getExtras();
 
         String area = bundle.getString("area");
+        Log.e(TAG, "onCreate: area->" + area);
         String crop = bundle.getString("crop");
 
         // TODO: 2016/5/21
         String fullN = bundle.getString("fullN");
         String validP = bundle.getString("validP");
         String fastK = bundle.getString("fastK");
-        Log.e(TAG, "onCreate: " + "fullN:" + fullN + ",validP:" + validP + ",fastK:" + fastK);
+        String organic = bundle.getString("organic");
+        Log.e(TAG, "onCreate: " + "fullN:" + fullN + ",validP:" + validP + ",fastK:" + fastK + ",organic:" + organic);
 
         String NF = bundle.getString("NFer");
         String PF = bundle.getString("PFer");
@@ -97,7 +99,7 @@ public class Shidanfei extends Activity {
         String lon = ((LocationApplication) getApplication()).Longtitude;
         String lat = ((LocationApplication) getApplication()).Latitude;
 
-        getData(way, area, lon, lat, crop, fullN, validP, fastK, NF, PF, KF, t, N, o5p2, clk);
+        getData(way, area, lon, lat, crop, fullN, validP, fastK, organic, NF, PF, KF, t, N, o5p2, clk);
 
         locationTextView = (TextView) findViewById(R.id.LocationText);
         locationTextView.setText(((LocationApplication) getApplication()).locationString);
@@ -149,8 +151,9 @@ public class Shidanfei extends Activity {
 
 
     public void getData(final int way, final String area, final String lon, final String lat, final String crop,
-                        final String fullN, final String validP, final String fastK, final String NF, final String PF, final String KF,
-                        final String t, final String N, final String o5p2, final String clk){ 
+                        final String fullN, final String validP, final String fastK, final String organic,
+                        final String NF, final String PF, final String KF,
+                        final String t, final String N, final String o5p2, final String clk){
         Log.e(TAG, "getData: way=" + way);
         String httpUrl="http://115.28.180.110/app_interface/cetuProcess.php";
         final String[] httpArg_area = {""};
@@ -205,11 +208,11 @@ public class Shidanfei extends Activity {
                                 + "&longtitude=" + lon + "&latitude=" + lat
                                 + "&jianjiedan=" + fullN + "&fastK=" + fastK + "&validP=" + validP
                                 + "&N_kind=" + NF + "&P_kind=" + PF + "&K_kind=" + KF
-                                + "&N1=" + N + "&P1=" + o5p2 + "&K1" +  clk;
+                                + "&fer_N=" + N + "&fer_P=" + o5p2 + "&fer_K=" +  clk + "&organic=" + organic;
                         break;
                 }
 
-                Log.e(TAG, "getData:" + path[0].toString());
+                Log.e(TAG, "getData: path[0]->" + path[0].toString());
                 try {
                     URL url = new URL(path[0]);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -226,7 +229,7 @@ public class Shidanfei extends Activity {
                             sbf.append("\r\n");
                         }
                         reader.close();
-                        Log.e(TAG, "getData:" + sbf.toString());
+                        Log.e(TAG, "getData: sbf->" + sbf.toString());
                         paresJson(sbf.toString());
                     }
                 } catch (Exception e) {

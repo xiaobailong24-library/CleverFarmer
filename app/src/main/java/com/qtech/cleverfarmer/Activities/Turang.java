@@ -56,6 +56,7 @@ public class Turang extends Activity implements SpinnerAdapter {
     public static EditText et2;
     public static EditText et3;
     public static EditText et4;
+    public static EditText etOrganic;
     public EditText et5;
     public EditText et6;
     public EditText et7;
@@ -90,7 +91,7 @@ public class Turang extends Activity implements SpinnerAdapter {
                     Log.e(TAG, "handleMessage: GPS");
                     break;
                 case 3: //不在威海市时，位置信息没有数据
-                    Toast.makeText(turaung_ac, "位置信息有误,不在威海市,建议按地区获取数据", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(turaung_ac, "建议按地区选择", Toast.LENGTH_SHORT).show();
                     break;
             }
 
@@ -121,6 +122,7 @@ public class Turang extends Activity implements SpinnerAdapter {
         et2 = (EditText) findViewById(R.id.et_quandan);
         et3 = (EditText) findViewById(R.id.et_youxiaolin);
         et4 = (EditText) findViewById(R.id.et_suxiaojia);
+        etOrganic = (EditText) findViewById(R.id.et_organic);
         et5 = (EditText) findViewById(R.id.et_chundan);
         et6 = (EditText) findViewById(R.id.et_wuyanghuaerlin);
         et7 = (EditText) findViewById(R.id.et_yanghuajia);
@@ -144,6 +146,7 @@ public class Turang extends Activity implements SpinnerAdapter {
                 bundle.putString("fullN", et2.getText().toString());
                 bundle.putString("validP", et3.getText().toString());
                 bundle.putString("fastK", et4.getText().toString());
+                bundle.putString("organic", etOrganic.getText().toString());
                 bundle.putString("NFer", NFer);
                 bundle.putString("PFer", PFer);
                 bundle.putString("KFer", KFer);
@@ -154,6 +157,10 @@ public class Turang extends Activity implements SpinnerAdapter {
                 bundle.putInt("way", way);
                 xuanze_intent.putExtras(bundle);
                 if (!et1.getText().toString().isEmpty()
+                        && !et2.getText().toString().isEmpty()
+                        && !et3.getText().toString().isEmpty()
+                        && !et4.getText().toString().isEmpty()
+                        && !etOrganic.getText().toString().isEmpty()
                         && !et5.getText().toString().isEmpty()
                         && !et6.getText().toString().isEmpty()
                         && !et7.getText().toString().isEmpty()) {
@@ -233,6 +240,8 @@ public class Turang extends Activity implements SpinnerAdapter {
                 et2.setEnabled(false);   //不可编辑
                 et3.setEnabled(false);
                 et4.setEnabled(false);
+                etOrganic.setEnabled(false);
+                etOrganic.setText("1");
                 customDialog.show();
             }
 
@@ -248,6 +257,8 @@ public class Turang extends Activity implements SpinnerAdapter {
                 et2.setEnabled(false);   //不可编辑
                 et3.setEnabled(false);
                 et4.setEnabled(false);
+                etOrganic.setEnabled(false);
+                etOrganic.setText("1");
                 Log.i("Fu", "经度:" + latitude);
                 Log.i("Fu", "纬度:" + longitude);
                 getDataByGPS(latitude, longitude);
@@ -263,6 +274,7 @@ public class Turang extends Activity implements SpinnerAdapter {
                 et2.setEnabled(true);   //可编辑
                 et3.setEnabled(true);
                 et4.setEnabled(true);
+                etOrganic.setEnabled(true);
                 way=3;
             }
         });
@@ -533,10 +545,7 @@ public class Turang extends Activity implements SpinnerAdapter {
 
             }
         });
-    /*
-     *
-	 *
-	 */
+
         spinner2.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,
@@ -595,7 +604,7 @@ public class Turang extends Activity implements SpinnerAdapter {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "cancleButton clicked");
+                Log.d(TAG, "cancelButton clicked");
                 customDialog.dismiss();
             }
         });
