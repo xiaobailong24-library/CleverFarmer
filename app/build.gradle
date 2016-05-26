@@ -8,8 +8,8 @@ android {
         applicationId "com.qtech.cleverfarmer"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 9
-        versionName "beta-0.9"
+        versionCode 10
+        versionName "beta-0.10"
     }
     buildTypes {
         release {
