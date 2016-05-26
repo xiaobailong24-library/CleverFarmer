@@ -11,7 +11,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="84dp"
         android:text="欢迎使用威海市农业局"
-        android:textColor="#FF0000"
+        android:textColor="#ff0000"
         android:textSize="30sp"
         android:typeface="monospace"/>
 
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="1dp"
-        android:text="施肥专家系统APP"
+        android:text="测土配方施肥专家系统"
         android:textColor="#FF0000"
         android:textSize="30sp"/>
 

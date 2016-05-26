@@ -79,6 +79,7 @@ public class Turang extends Activity implements SpinnerAdapter {
                     et2.setText(bundle.getString("fullN"));
                     et3.setText(bundle.getString("validP"));
                     et4.setText(bundle.getString("fastK"));
+                    etOrganic.setText(bundle.getString("organic"));
                     break;
                 case 1: // 根据地区获取数据
                     area = (String) msg.obj;
@@ -241,7 +242,6 @@ public class Turang extends Activity implements SpinnerAdapter {
                 et3.setEnabled(false);
                 et4.setEnabled(false);
                 etOrganic.setEnabled(false);
-                etOrganic.setText("1");
                 customDialog.show();
             }
 
@@ -258,7 +258,6 @@ public class Turang extends Activity implements SpinnerAdapter {
                 et3.setEnabled(false);
                 et4.setEnabled(false);
                 etOrganic.setEnabled(false);
-                etOrganic.setText("1");
                 Log.i("Fu", "经度:" + latitude);
                 Log.i("Fu", "纬度:" + longitude);
                 getDataByGPS(latitude, longitude);
@@ -467,16 +466,16 @@ public class Turang extends Activity implements SpinnerAdapter {
             String fullN = jsonObject_data.getString("fullN");
             String validP = jsonObject_data.getString("validP");
             String fastK = jsonObject_data.getString("fastK");
+            String organic = jsonObject_data.getString("organic");
 
-            System.out.println(fullN);
-            System.out.println(validP);
-            System.out.println(fastK);
+            Log.e(TAG, "paresJson: " + "fullN->" + fullN + ",validP->" + validP + ",fastK->" + fastK + ",organic->" + organic);
 
 
             Bundle bundle = new Bundle();
             bundle.putString("validP", validP);
             bundle.putString("fastK", fastK);
             bundle.putString("fullN", fullN);
+            bundle.putString("organic", organic);
 
             Message msg = handler.obtainMessage();
             msg.what = 0;

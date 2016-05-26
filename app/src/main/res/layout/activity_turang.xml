@@ -107,7 +107,7 @@
                 android:layout_marginTop="3dp"
                 android:background="#FFF8DC"
                 android:gravity="center"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:enabled="false"/>
 
         </LinearLayout>
@@ -139,7 +139,7 @@
                 android:layout_marginTop="3dp"
                 android:background="#FFF8DC"
                 android:gravity="center"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:enabled="false"/>
 
         </LinearLayout>
@@ -170,7 +170,7 @@
                 android:layout_marginTop="3dp"
                 android:background="#FFF8DC"
                 android:gravity="center"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:enabled="false"/>
 
         </LinearLayout>
@@ -189,7 +189,7 @@
                 android:layout_marginTop="3dp"
                 android:background="#8B4513"
                 android:gravity="center"
-                android:text="有机质(mg/kg)"
+                android:text="有机质(g/kg)"
                 android:textColor="#FFFFFF"
                 android:textSize="20dp"/>
 
@@ -201,7 +201,7 @@
                 android:layout_marginTop="3dp"
                 android:background="#FFF8DC"
                 android:gravity="center"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:enabled="false"/>
 
         </LinearLayout>
@@ -439,7 +439,7 @@
                 android:background="#FFF8DC"
                 android:gravity="center"
                 android:hint="请输入数据"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textSize="17sp"/>
         </LinearLayout>
 
@@ -470,7 +470,7 @@
                 android:background="#FFF8DC"
                 android:gravity="center"
                 android:hint="请输入数据"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textSize="17sp"/>
         </LinearLayout>
 
